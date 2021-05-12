@@ -1,0 +1,41 @@
+﻿@model MapleSharks.Models.ComboModel
+
+<div>
+    <h4>Account Information</h4>
+    <hr />
+    <dl class="row">
+    </dl>
+
+    <p>
+        <a asp-action="AccountDetails">Account information</a>
+    </p>
+    <div class="container d-flex flex-wrap">
+       
+        <div  class="card text-white bg-primary mb-3" style="width:25rem;">
+            <img class="card-img-top" src="data:image/png;base64, @Html.DisplayTextFor(model => model.cPicture)" alt="Card image cap" />
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(model => model.Username)</h5>
+                <p class="card-text"> @Html.DisplayFor(model => model.Id)</p>
+                <p class="card-text">@Html.DisplayFor(model => model.EmailId)</p>
+                <p class="card-text">@Html.DisplayFor(model => model.usrTyp)</p>
+                <p class="card-text">@Html.DisplayFor(model => model.cUsrAddressNo)</p>
+                <p class="card-text">@Html.DisplayFor(model => model.cUsrAddressStreet)</p>
+                <p class="card-text">@Html.DisplayFor(model => model.cUsrAddressCity)</p>
+                <p class="card-text">@Html.DisplayFor(model => model.cUsrAddressZipcode)</p>
+                <a href="/Register/AccountData" class="btn btn-Primary"> Update Account</a>
+                @*<a asp-controller="Register" asp-action="AccountData" class="btn btn-Primary">Update Account</a>*@
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
+    @*<a asp-controller="Register" asp-action="Index">Register Home | </a>*@
+    <a asp-controller="RegisterSwimmer" asp-action="ShowRegistrationForm">Register new swimmer here | </a>
+    @*<a asp-controller="Register" asp-action="AccountData">Update Account |</a>*@
+    <a asp-controller="RegisterSwimmer" asp-action="ShowSwimmerData"> Your account  | </a>
+    <a asp-controller="Register" asp-action="AccountDetails">Account Details |</a>
+    <a asp-controller="Login" asp-action="ProcessLogout">Logout</a>
+</div>
+
+<partial><br />@ViewBag.Message</partial>

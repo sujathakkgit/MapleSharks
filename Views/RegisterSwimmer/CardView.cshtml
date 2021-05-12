@@ -1,0 +1,32 @@
+﻿@model IEnumerable<MapleSharks.Models.SwimmerModel>
+
+    <p>
+        <a asp-action="ShowSwimmerDataCard">List of registered swimmers</a>
+    </p>
+    <div class="container d-flex flex-wrap">
+        @foreach(var item in Model)
+        {
+            <div class="card" style="width: 18rem;">
+                @*<img class="card-img-top" src="..." alt="Card image cap">*@
+                <div class="card-body">
+                    <h5 class="card-title">@item.swrFname</h5>
+                    <h5 class="card-title">@item.swrLname</h5>
+                    <p class="card-text"> @item.Id</p>
+                    <p class="card-text"> @item.swimgroup</p>
+                    <p class="card-text">@Html.DisplayFor(m => item.parentid)</p>
+                    <p class="card-text">@Html.DisplayFor(m => item.dob)</p>
+                    <a href="/Register/AccountDetails" class="btn btn-Primary"> Parent Account</a>
+                </div>
+            </div>
+        }
+    </div>
+
+<div>
+   
+
+    <a asp-controller="RegisterSwimmer" asp-action="ShowRegistrationForm">Register swimmer here | </a>
+    <a asp-controller="RegisterSwimmer" asp-action="ShowSwimmerData"> Your Account  | </a>
+    <a asp-controller="Login" asp-action="ProcessLogout">LogOut</a>
+    
+</div>
+<partial><br />@ViewBag.Message</partial>

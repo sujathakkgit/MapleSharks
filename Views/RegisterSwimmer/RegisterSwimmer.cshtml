@@ -1,0 +1,134 @@
+﻿@model MapleSharks.Models.SwimmerModel
+
+<h4>Swimmer Status</h4>
+<hr />
+@if (ViewBag.swrTyp == 0)
+{
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="ProcessSwimmerReg">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @*<div class="form-group">
+                        <label asp-for="Id" class="control-label"></label>
+                        <input asp-for="Id" class="form-control" />
+                        <span asp-validation-for="Id" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="parentid" class="control-label"></label>
+                        <input asp-for="parentid" class="form-control" />
+                        <span asp-validation-for="parentid" class="text-danger"></span>
+                    </div>*@
+                <div class="form-group">
+                    <label asp-for="swrFname" class="control-label"></label>
+                    <input asp-for="swrFname" class="form-control" />
+                    <span asp-validation-for="swrFname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="swrLname" class="control-label"></label>
+                    <input asp-for="swrLname" class="form-control" />
+                    <span asp-validation-for="swrLname" class="text-danger"></span>
+                </div>
+                @*<div class="form-group">
+                        <label asp-for="swimgroup" class="control-label"></label>
+                        <input asp-for="swimgroup" class="form-control" />
+                        <span asp-validation-for="swimgroup" class="text-danger"></span>
+                    </div>*@
+                <div class="form-group">
+                    <label asp-for="dob" class="control-label"></label>
+                    <input asp-for="dob" type="date" class="form-control" />
+                    <span asp-validation-for="dob" class="text-danger"></span>
+                </div>
+                @*<div class="form-group">
+                        <label asp-for="active" class="control-label"></label>
+                        <input asp-for="active" class="form-control" />
+                        <span asp-validation-for="active" class="text-danger"></span>
+                    </div>*@
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+
+            </form>
+        </div>
+    </div>
+}
+else if (ViewBag.swrTyp == 1)
+{
+    <partial>Swimmer already exists!</partial>
+    <br />
+
+
+    @Html.DisplayNameFor(model => model.Id)
+    @Html.Display("Id")
+    <br />
+
+    @Html.DisplayNameFor(model => model.parentid)
+    @Html.Display("parentid")
+    <br />
+    @Html.DisplayNameFor(model => model.swrFname)
+    @Html.DisplayText(" : ")
+    @Html.Display("swrFname")
+    <br />
+    <br />
+    @Html.DisplayNameFor(model => model.swrLname)
+    @Html.DisplayText(" : ")
+    @Html.Display("swrLname")
+    <br />
+
+    @Html.DisplayNameFor(model => model.swimgroup)
+    @Html.DisplayText(" : ")
+    @Html.Display("swimgroup")
+    <br />
+    @Html.DisplayNameFor(model => model.dob)
+    @Html.DisplayText(" : ")
+    @Html.Display("dob")
+    <br />
+}
+else if (ViewBag.swrTyp == 2)
+{
+    <partial>Congrats!Your swimmer just got added <br /></partial>
+    @Html.DisplayText(" Congrats!Your swimmer just got added ")
+    <br />
+
+    @Html.DisplayNameFor(model => model.Id)
+    @Html.DisplayText(" : ")
+    @Html.Display("Id")
+    <br />
+
+    @Html.DisplayNameFor(model => model.parentid)
+    @Html.DisplayText(" : ")
+    @Html.Display("parentid")
+    <br />
+    @Html.DisplayNameFor(model => model.swrFname)
+    @Html.DisplayText(" : ")
+    @Html.Display("swrFname")
+    <br />
+
+    @Html.DisplayNameFor(model => model.swrLname)
+    @Html.DisplayText(" : ")
+    @Html.Display("swrLname")
+    <br />
+
+    @Html.DisplayNameFor(model => model.swimgroup)
+    @Html.DisplayText(" : ")
+    @Html.Display("swimgroup")
+    <br />
+    @Html.DisplayNameFor(model => model.dob)
+    @Html.DisplayText(" : ")
+    @Html.Display("dob")
+    <br />
+}
+
+<div>
+    <a asp-controller="Home" asp-action="Index">Main page | </a>
+    <a asp-controller="RegisterSwimmer" asp-action="ShowRegistrationForm">Register swimmer here | </a>
+    <a asp-controller="RegisterSwimmer" asp-action="ShowSwimmerData">Your account  | </a>
+    <a asp-controller="RegisterSwimmer" asp-action="ShowSwimmerDataCard">Card account  | </a>
+
+    <a asp-controller="Login" asp-action="ProcessLogout">Logout</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}@*//scripts*@
+
+<partial><br />@ViewBag.Message</partial>

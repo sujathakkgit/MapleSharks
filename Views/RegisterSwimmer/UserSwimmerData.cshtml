@@ -1,0 +1,78 @@
+﻿@model IEnumerable<MapleSharks.Models.SwimmerModel>
+
+<p>
+    <a asp-action="ShowSwimmerData">List of registered swimmers</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.parentid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.swrFname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.swrLname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.swimgroup)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dob)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.active)
+            </th>
+            
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.parentid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.swrFname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.swrLname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.swimgroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dob)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.active)
+            </td>
+            <td>
+           @*     @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="RegisterSwimmer" asp-action="ShowRegistrationForm">Register swimmer here | </a>
+<a asp-controller="Register" asp-action="AccountData">Update Account | </a>
+<a asp-controller="Register" asp-action="AccountDetails">Account Details | </a>
+<a asp-controller="RegisterSwimmer" asp-action="ShowSwimmerData"> Your account  | </a>
+<a asp-controller="RegisterSwimmer" asp-action="ShowSwimmerDataCard"> Card Layout   | </a>
+
+<a asp-controller="Login" asp-action="ProcessLogout">LogOut</a>
+
+<partial><br />@ViewBag.Message</partial>

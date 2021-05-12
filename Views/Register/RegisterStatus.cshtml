@@ -1,0 +1,61 @@
+﻿@model MapleSharks.Models.UserModel
+
+<div>
+    <h4>Registration Status</h4>
+    <hr />
+
+    <!--suj comment deatils and give message-->
+    @*<dl class="row">
+        <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Username)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Username)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+        </dl>*@
+</div>
+    @if (@ViewBag.usrTyp == 1)
+    {
+<partial>Your username  @Model.Username or emailid @Model.EmailId already exists, try registering with diff username</partial><br />
+    }
+    else if (@ViewBag.usrTyp == 2)
+    {
+<partial> Congrats: You are registered.<br /> Your username is: @Model.Username and <br /> your emailid is : @Model.EmailId </partial>
+    }
+    else if (@ViewBag.usrTyp == 4)
+    { <partial>Registration form incomplete fill all deatils</partial>}
+    else if (ViewBag.usrTyp == 3)
+    {
+<partial> Hi @Model.Username, your username , email @Model.EmailId  </partial>
+    @Html.Raw("<span>Registration failed </span>")
+
+    }
+    else
+    {
+<partial>Something wrong : @ViewBag.Message</partial>
+    
+    }
+<div>
+    @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
+
+    <a asp-controller="Home" asp-action="Index">Main page | </a>
+    @*<a asp-controller="Register" asp-action="Index">Register Home | </a>*@
+    <a asp-controller="Login" asp-action="Index">Login | </a>
+    @*<a asp-controller="Register" asp-action="AccountData"> Update Account | </a>
+    <a asp-controller="Register" asp-action="AccountDetails"> View Account data | </a>*@
+
+
+</div>
+<partial><br />@ViewBag.Message</partial>

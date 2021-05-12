@@ -1,0 +1,105 @@
+﻿@model MapleSharks.Models.ComboModel
+
+
+<h4>Complete your account details here</h4>
+<hr />
+<form asp-action="UpdateAccount" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <!-- suj delete Id and change type password-->
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(model => model.Username)</h5>
+                <img src="data:image/png;base64, @Html.DisplayTextFor(model => model.cPicture)" alt="Card image cap" />
+            </div>
+            <div class="card w-75">
+                <p class="card-text"> @Html.DisplayFor(model => model.Id)</p>
+                <p class="card-text">@Html.DisplayFor(model => model.EmailId)</p>
+                @*<p class="card-img-top"> @Html.LabelFor(model => model.ImagePath)</p>
+                   <p class="card-img-top"> @Html.LabelFor(model => model.cPicture)</p>*@
+                <a href="\Register\AccountData" class="btn btn-Primary">Update Account</a>
+                @*<a href="#" class="btn btn-primary">Update account</a>*@
+            </div>
+
+            <div class="form-group">
+                <label asp-for="firstName" class="control-label"></label>
+                <input asp-for="firstName" class="form-control" />
+                <span asp-validation-for="firstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="lastName" class="control-label"></label>
+                <input asp-for="lastName" class="form-control" />
+                <span asp-validation-for="lastName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <partial>Address</partial>
+                <input asp-for="cUsrAddressNo" type="number" class="form-control" />
+                <input asp-for="cUsrAddressStreet" type="text" class="form-control" />
+                <input asp-for="cUsrAddressCity" type="text" class="form-control" />
+                <input asp-for="cUsrAddressZipcode" type="number" class="form-control" />
+                <span asp-validation-for="cUsrAddressNo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" runat="server">
+                @*@using (Html.BeginForm("Create", "Image", null, FormMethod.Post,
+                    new { enctype = "multipart/form-data" }))*@
+
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                @* <legend>Image</legend>
+                       <div class="editor-label">
+                        @Html.LabelFor(model => model.ImagePath)
+                    </div>*@
+                <div class="editor-field">
+                    <label asp-for="ImagePath" class="control-label"></label>
+                    <input asp-for="ImagePath" id="ImagePath"  />
+                    <input asp-for="ImageData" id="ImageData" title="Upload a product image"
+                           type="file" class="form-control" />
+
+                    @*<asp:Image ID="imgEvid" src="#" runat="server" Height="99px" />
+        if (File.Exists(filepath))
+        {
+        byte[] imageArray = System.IO.File.ReadAllBytes(filepath);
+        string base64ImageRepresentation = Convert.ToBase64String(imageArray);
+        var val = $"data: image/png; base64,{base64ImageRepresentation}";
+        imgEvid.Attributes.Add("src", val);
+        }*@
+
+                    @*<div class="form-group">
+            <label asp-for="cPicture" class="control-label"></label>
+            <input asp-for="cPicture" type="image" src="ImagePath" alt="Submit" width="48" height="48" class="form-control" />
+            <span asp-validation-for="cPicture" class="text-danger"></span>
+        </div>*@
+                    @*@Html.DisplayFor(modelItem => item.ImagePath)*@
+                    <div class="form-group">
+                        <input type="submit" value="Update" class="btn btn-primary" />
+                    </div>
+
+                    <div>
+                        @*<a asp-action="Index">Back to List | </a>*@
+                        <a asp-controller="Register" asp-action="AccountDetails">Account Details |</a>
+                        <a asp-controller="Register" asp-action="AccountData"> Update Account |</a>
+                        <a asp-controller="Login" asp-action="ProcessLogout">Logout</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        @*<img class="card-img-top" src="..." alt="Card image cap">*@
+                       
+                        
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+</form>
+<partial><br />@ViewBag.Message</partial>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
